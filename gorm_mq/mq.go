@@ -132,7 +132,7 @@ func (m *Mq) Consumer(topic string, id string) (mq.Consumer, error) {
 	}
 	// 重新分配consumer对应的分区
 	tp.lock.Lock()
-	closeCh := make(chan struct{}, 0)
+	closeCh := make(chan struct{})
 	consumers, ok := tp.consumerGroups[id]
 	if !ok {
 		consumers = make([]*MqConsumer, 0, 16)
