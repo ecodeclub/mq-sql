@@ -1,4 +1,4 @@
-# Copyright 2023 ecodeclub
+# Copyright 2021 ecodeclub
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ TARGET_PUSH=.git/hooks/pre-push
 # copy pre-commit file if not exist.
 if [ ! -f $TARGET_COMMIT ]; then
     echo "设置 git pre-commit hooks..."
-    cp $SOURCE_COMMIT $TARGET_COMMIT
+    cp $SOURCE_COMMIT $TARGET_COMMITgo clean -modcache
 fi
 
 # copy pre-push file if not exist.
@@ -34,7 +34,7 @@ test -x $TARGET_PUSH || chmod +x $TARGET_PUSH
 test -x $TARGET_COMMIT || chmod +x $TARGET_COMMIT
 
 echo "安装 golangci-lint..."
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.52.2
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 echo "安装 goimports..."
 go install golang.org/x/tools/cmd/goimports@latest
